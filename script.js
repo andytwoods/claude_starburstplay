@@ -60,7 +60,7 @@ async function createSunburstChart() {
     g.selectAll("path")
         .data(rootHierarchy.descendants().slice(1))
         .join("path")
-        .attr("fill", d => { while (d.depth > 1) d = d.parent; return d3.color("steelblue"); })
+        .attr("fill", d => { while (d.depth > 1) d = d.parent; return d3.interpolate("steelblue", "darkgrey")(d3.randomUniform()()); })
         .attr("d", arc)
         .on("mouseover", function (event, d) {
             tooltip.transition()
